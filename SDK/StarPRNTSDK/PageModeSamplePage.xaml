@@ -1,0 +1,62 @@
+﻿<Page x:Class="StarPRNTSDK.PageModeSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="PageModeSamplePage">
+
+    <Page.Resources >
+        <local:ReceiptInformationManager x:Key="TextRotation0" Type="TextLabel" Language="{Binding Source={StaticResource ReceiptInformationManager}, Path=Language}" PaperSize="{Binding Source={StaticResource ReceiptInformationManager}, Path=PaperSize}" Rotation="Normal" />
+        <local:ReceiptInformationManager x:Key="TextRotation90" Type="TextLabel" Language="{Binding Source={StaticResource ReceiptInformationManager}, Path=Language}" PaperSize="{Binding Source={StaticResource ReceiptInformationManager}, Path=PaperSize}" Rotation="Right90" />
+        <local:ReceiptInformationManager x:Key="TextRotation180" Type="TextLabel" Language="{Binding Source={StaticResource ReceiptInformationManager}, Path=Language}" PaperSize="{Binding Source={StaticResource ReceiptInformationManager}, Path=PaperSize}" Rotation="Rotate180" />
+        <local:ReceiptInformationManager x:Key="TextRotation270" Type="TextLabel" Language="{Binding Source={StaticResource ReceiptInformationManager}, Path=Language}" PaperSize="{Binding Source={StaticResource ReceiptInformationManager}, Path=PaperSize}" Rotation="Left90" />
+
+        <local:PrintLocalizeReceiptWithPageModeClickEvent x:Key="PrintTextReceiptRotation0Command" ReceiptInformationManager="{StaticResource TextRotation0}" Executable="True" />
+        <local:PrintLocalizeReceiptWithPageModeClickEvent x:Key="PrintTextRexeiptRotation90Command" ReceiptInformationManager="{StaticResource TextRotation90}" Executable="True" />
+        <local:PrintLocalizeReceiptWithPageModeClickEvent x:Key="PrintTextRexeiptRotation180Command" ReceiptInformationManager="{StaticResource TextRotation180}" Executable="True" />
+        <local:PrintLocalizeReceiptWithPageModeClickEvent x:Key="PrintTextRexeiptRotation270Command" ReceiptInformationManager="{StaticResource TextRotation270}" Executable="True" />
+
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=PageModeSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOSDKSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextRotation0}, Path=DescriptionWithRotation}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextReceiptRotation0Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextRotation90}, Path=DescriptionWithRotation}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextRexeiptRotation90Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextRotation180}, Path=DescriptionWithRotation}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextRexeiptRotation180Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextRotation270}, Path=DescriptionWithRotation}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextRexeiptRotation270Command}" />
+
+
+            </ListBox>
+
+           
+
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>

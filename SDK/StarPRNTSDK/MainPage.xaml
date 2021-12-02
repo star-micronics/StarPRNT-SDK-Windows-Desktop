@@ -1,0 +1,254 @@
+﻿<Page x:Class="StarPRNTSDK.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d"
+      d:DesignHeight="1200" d:DesignWidth="1200"
+      Title="MainPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <x:Array x:Key="AllLanguageWithCjkArray" Type="{x:Type local:Language}" >
+            <local:Language Type="English" />
+            <local:Language Type="Japanese" />
+            <local:Language Type="French" />
+            <local:Language Type="Portuguese" />
+            <local:Language Type="Spanish" />
+            <local:Language Type="German" />
+            <local:Language Type="Russian" />
+            <local:Language Type="SimplifiedChinese" />
+            <local:Language Type="TraditionalChinese" />
+            <local:Language Type="Utf8MultiLanguage" />
+        </x:Array>
+
+        <x:Array x:Key="AllLanguageArray" Type="{x:Type local:Language}" >
+            <local:Language Type="English" />
+            <local:Language Type="Japanese" />
+            <local:Language Type="French" />
+            <local:Language Type="Portuguese" />
+            <local:Language Type="Spanish" />
+            <local:Language Type="German" />
+            <local:Language Type="Russian" />
+            <local:Language Type="SimplifiedChinese" />
+            <local:Language Type="TraditionalChinese" />
+        </x:Array>
+
+        <x:Array x:Key="EnJpArray" Type="{x:Type local:Language}" >
+            <local:Language Type="English" />
+            <local:Language Type="Japanese" />
+        </x:Array>
+
+        <local:SelectSettingWindow x:Key="SelectAllLanguageWithCjkWindow" SettingTitle="Select language." Languages="{StaticResource AllLanguageWithCjkArray}" SelectedIndex="0" />
+        <local:SelectSettingWindow x:Key="SelectAllLanguageWindow" SettingTitle="Select language." Languages="{StaticResource AllLanguageArray}" SelectedIndex="0" />
+        <local:SelectSettingWindow x:Key="SelectEnJpWindow" SettingTitle="Select language." Languages="{StaticResource EnJpArray}" SelectedIndex="0" />
+
+        <local:GoSearchPortPageCommand x:Key="GoSearchPortPageCommand" PrinterPriority="0" Executable="True" />
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoPrinterSamplePageCommand" NavigationUri="PrinterSamplePage.xaml" SelectLanguageWindow="{StaticResource SelectAllLanguageWithCjkWindow}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=PrinterSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoBlackMarkSamplePageCommand" NavigationUri="BlackMarkSamplePage.xaml" SelectLanguageWindow="{StaticResource SelectEnJpWindow}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=BlackMarkSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoBlackMarkPasteSamplePageCommand" NavigationUri="BlackMarkPasteSamplePage.xaml" SelectLanguageWindow="{StaticResource SelectEnJpWindow}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=BlackMarkSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoPageModeSamplePageCommand" NavigationUri="PageModeSamplePage.xaml" SelectLanguageWindow="{StaticResource SelectEnJpWindow}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=PageModeSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoPrintRedirectionSamplePageCommand" NavigationUri="PrintRedirectionSamplePage.xaml" SelectLanguageWindow="{StaticResource SelectAllLanguageWindow}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=PrintRedirectionSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoHoldPrintSamplePageCommand" NavigationUri="HoldPrintSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=HoldPrintSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:AutoSwitchInterfaceClickEvent x:Key="GoAutoSwitchInterfaceSamplePageCommand" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=AutoSwitchInterfaceSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommand x:Key="GoCashDrawerPageCommand" NavigationUri="CashDrawerSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=CashDrawerSampleIsEnabled, Mode=OneWay}" />
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoBarcodeReaderExtSamplePageCommand" NavigationUri="BarcodeReaderExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=BarcodeReaderSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoDisplaySamplePageCommand" NavigationUri="DisplaySamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=CustomerDisplaySampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoMelodySpeakerSamplePageCommand" NavigationUri="MelodySpeakerSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=MelodySpeakerSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoCombinationSamplePageCommand" NavigationUri="CombinationSamplePage.xaml" SelectLanguageWindow="{StaticResource SelectAllLanguageWindow}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=CombinationSampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoCombinationPrinterDriverSamplePageCommand" NavigationUri="CombinationPrinterDriverSamplePage.xaml" SelectLanguageWindow="{StaticResource SelectAllLanguageWindow}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=CombinationPrinterDriverSampleIsEnabled, Mode=OneWay}" />
+
+        <local:GoNextPageCommandWithSelectSetting x:Key="GoAPISamplePageCommand" NavigationUri="APISamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=APISampleIsEnabled, Mode=OneWay}"/>
+
+        <local:GoNextPageCommand x:Key="GoDeviceStatusSamplePageCommand" NavigationUri="DeviceStatusSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=DeviceStatusSampleIsEnabled, Mode=OneWay}" />
+
+        <local:ShowSerialNumberClickEvent x:Key="ShowSerialNumberCommand" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=SerialNumberSampleIsEnabled, Mode=OneWay}" />
+
+        <local:GoNextPageCommand x:Key="GoBluetoothSettingSamplePageCommand" NavigationUri="BluetoothSettingSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=BluetoothSettingSampleIsEnabled, Mode=OneWay}" />
+
+        <local:GoNextPageCommand x:Key="GoUSBSerialNumberSamplePageCommand" NavigationUri="USBSerialNumberSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=USBSerialNumberSampleIsEnabled, Mode=OneWay}" />
+
+        <local:ShowLibraryVersionClickEvent x:Key="ShowLibraryVersionCommand" Executable="True" />
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Label Content="{Binding Source={StaticResource ResourceManager}, Path=AppTitle}" Style="{StaticResource PageTitleStyle}" />
+                <Label Content="Ver." Style="{StaticResource PageTitleStyle}" />
+                <Label Content="{Binding Source={StaticResource ResourceManager}, Path=Version}" Style="{StaticResource PageTitleStyle}" />
+            </StackPanel>
+
+            <Label Content="Destination Device" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="{Binding Source={StaticResource SelectedModelManager}, Path=SelectedModelDescription}"
+                    ForeGroundColor="Blue"
+                    BackGroudColor="LightBlue"
+                    IsAnimation="{Binding Source={StaticResource SelectedModelManager}, Path=IsUnselected}"
+                    ListBoxItemTouchedCommand="{StaticResource GoSearchPortPageCommand}" />
+            </ListBox>
+
+            <Label Content="Printer" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Black Mark Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoBlackMarkSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Black Mark Sample (Paste)"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoBlackMarkPasteSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Page Mode Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoPageModeSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Print Re-Direction Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrintRedirectionSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Hold Print Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoHoldPrintSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="AutoSwitch Interface Sample"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource GoAutoSwitchInterfaceSamplePageCommand}"/>
+
+            </ListBox>
+
+            <Label Content="Peripheral" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="Cash Drawer Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCashDrawerPageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Barcode Reader Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoBarcodeReaderExtSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Display Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoDisplaySamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Melody Speaker Sample"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource GoMelodySpeakerSamplePageCommand}"/>
+
+            </ListBox>
+
+            <Label Content="Combination" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="{Binding Source={StaticResource ResourceManager}, Path=StarIOExtManagerSampleTitle}"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationSamplePageCommand}"/>
+
+            </ListBox>
+
+            <Label Content="Combination (for Printer Driver)" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="Sample"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationPrinterDriverSamplePageCommand}"/>
+
+            </ListBox>
+
+            <Label Content="API" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="Sample"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource GoAPISamplePageCommand}"/>
+            </ListBox>
+
+            <Label Content="Device Status" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="Sample"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoDeviceStatusSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="Product Serial Number"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource ShowSerialNumberCommand}"/>
+
+            </ListBox>
+
+            <Label Content="Interface" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="Bluetooth Setting"
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoBluetoothSettingSamplePageCommand}"/>
+
+                <local:BaseListBoxItem
+                    Title="USB Serial Number"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource GoUSBSerialNumberSamplePageCommand}"/>
+
+            </ListBox>
+
+            <Label Content="Appendix" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="Library Version"
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource ShowLibraryVersionCommand}"/>
+
+            </ListBox>
+
+
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>

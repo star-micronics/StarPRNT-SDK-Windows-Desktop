@@ -1,0 +1,121 @@
+﻿<Page x:Class="StarPRNTSDK.SearchPortSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d"
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="SearchPortSamplePage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <x:Array x:Key="InterFaceTypeArray" Type="{x:Type local:InterfaceInformation}" >
+            <local:InterfaceInformation Type="USBVendorClass" />
+            <local:InterfaceInformation Type="USBPrinterClass" />
+            <local:InterfaceInformation Type="Ethernet" />
+            <local:InterfaceInformation Type="Bluetooth" />
+            <local:InterfaceInformation Type="Serial" />
+            <local:InterfaceInformation Type="Parallel" />
+            <local:InterfaceInformation ManualSetting="All" />
+            <local:InterfaceInformation ManualSetting="Manual" />
+        </x:Array>
+
+        <x:Array x:Key="PrinterModelArray" Type="{x:Type local:ModelInformation}" >
+            <local:ModelInformation Model="MCP20" />
+            <local:ModelInformation Model="MCP30" />
+            <local:ModelInformation Model="POP10" />
+            <local:ModelInformation Model="FVP10" />
+            <local:ModelInformation Model="TSP100IV" />
+            <local:ModelInformation Model="TSP100" />
+            <local:ModelInformation Model="TSP650II" />
+            <local:ModelInformation Model="TSP700II" />
+            <local:ModelInformation Model="TSP800II" />
+            <local:ModelInformation Model="SP700" />
+            <local:ModelInformation Model="S210i" />
+            <local:ModelInformation Model="S220i" />
+            <local:ModelInformation Model="S230i" />
+            <local:ModelInformation Model="T300i" />
+            <local:ModelInformation Model="T400i" />
+            <local:ModelInformation Model="L200" />
+            <local:ModelInformation Model="L300" />
+            <local:ModelInformation Model="BSC10" />
+            <local:ModelInformation Model="S210i_StarPRNT" />
+            <local:ModelInformation Model="S220i_StarPRNT" />
+            <local:ModelInformation Model="S230i_StarPRNT" />
+            <local:ModelInformation Model="T300i_StarPRNT" />
+            <local:ModelInformation Model="T400i_StarPRNT" />
+        </x:Array>
+
+        <x:Array x:Key="ManualSettingsArray" Type="sys:String" >
+            <sys:String>Port Name</sys:String>
+            <sys:String>Port Settings</sys:String>
+        </x:Array>
+
+        <x:Array x:Key="ManualPortSettingsForSerialPortArray" Type="sys:String" >
+            <sys:String>Port Settings</sys:String>
+        </x:Array>
+
+        <x:Array x:Key="DrawerOpenStatusArray" Type="sys:String" >
+            <sys:String>High when Open</sys:String>
+            <sys:String>Low when Open</sys:String>
+        </x:Array>
+
+        <local:SelectSettingWindow x:Key="SelectInterfaceWindow" SettingTitle="Select Interface." InterfaceInformations="{StaticResource InterFaceTypeArray}" SelectedIndex="0" />
+
+        <local:SelectSettingWindow x:Key="SelectModelWindow" Title="Confirm" SettingTitle="What is your printer?" ModelInformations="{StaticResource PrinterModelArray}" SelectedIndex="0" />
+
+        <local:EnterTextWindow x:Key="ManualSettingWindow" SettingTitle="Please enter the port name and port settings." Settings="{StaticResource ManualSettingsArray}" />
+
+        <local:EnterTextWindow x:Key="ManualPortSettingsForSerialPortWindow" SettingTitle="Please enter the your printer port settings." Settings="{StaticResource ManualPortSettingsForSerialPortArray}" />
+
+        <local:SelectSettingWindow x:Key="SelectDrawerOpenStatusWindow" SettingTitle="Select CashDrawer Open Status." Settings="{StaticResource DrawerOpenStatusArray}" SelectedIndex="0" />
+
+        <DataTemplate x:Key="PortListBoxItemTemplate" DataType="{x:Type local:PortInfoManager}">
+            <StackPanel Orientation="Vertical" >
+                <Button Tag="{Binding PortInfo}" Background="White" Template="{StaticResource ListBoxItemButtonTemplete}" Click="PortListBoxItem_Click">
+                    <Button.Content >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Vertical" Grid.Column="0">
+                                <TextBlock Text="{Binding ModelName}" FontSize="20" Foreground="Blue" Margin="10, 0, 0, 0" />
+                                <TextBlock Text="{Binding Description}" FontSize="15" Foreground="Blue" Margin="10, 0, 0, 0"/>
+                            </StackPanel>
+
+                            <Label Grid.Column="1" Content="a" FontFamily="Marlett" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Visibility="{Binding CheckMarkVisibility}" />
+                        </Grid>
+                    </Button.Content>
+                </Button>
+
+                <Line VerticalAlignment="Center"
+                                      X1="0" X2="{Binding Path=ActualWidth,RelativeSource={RelativeSource Mode=Self}}"
+                                      Y1="0" Y2="0"
+                                      Stroke="LightGray" StrokeThickness="2" />
+            </StackPanel>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="{Binding Source={StaticResource ResourceManager}, Path=SearchPortSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Button Grid.Row="0"  HorizontalAlignment="Right" Template="{StaticResource RefreshButtonTemplete}" Margin="0, 0, 20, 0" Click="ButtonRefresh_Click"/>
+
+            <Label Grid.Row="1" Content="List" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox x:Name="portListBox" Grid.Row="2" ItemTemplate="{StaticResource PortListBoxItemTemplate}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" BorderBrush="{x:Null}" />
+        </Grid>
+    </local:CustomScrollViewer>
+
+</Page>

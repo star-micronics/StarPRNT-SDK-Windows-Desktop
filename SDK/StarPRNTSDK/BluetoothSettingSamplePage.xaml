@@ -1,0 +1,136 @@
+﻿<Page x:Class="StarPRNTSDK.BluetoothSettingSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="BluetoothSettingSamplePage" Loaded="Page_Loaded">
+
+    <Page.Resources >
+        <x:Array x:Key="SecurityTypeArray" Type="{x:Type local:BluetoothSecurityTypeManager}" >
+            <local:BluetoothSecurityTypeManager Type="DISABLE" />
+            <local:BluetoothSecurityTypeManager Type="SSP" />
+            <local:BluetoothSecurityTypeManager Type="PINCODE" />
+        </x:Array>
+
+        <local:ListBoxItemWithTextBox
+            x:Key="DeviceNameListBoxItem"
+            Title="Device Name"
+            ControlDisabledMessage="N/A"
+            TextBoxPreferredImeConversionMode="Alphanumeric"
+            ForeGroundColor="Black"
+            BorderBlushColor="LightGray"
+            ListBoxItemTouchedCommand="{x:Null}" />
+
+        <local:ListBoxItemWithTextBox
+            x:Key="iOSPortNameListBoxItem"
+            Title="iOS Port Name"
+            ControlDisabledMessage="N/A"
+            TextBoxPreferredImeConversionMode="Alphanumeric"
+            ForeGroundColor="Black"
+            BorderBlushColor="LightGray"
+            ListBoxItemTouchedCommand="{x:Null}" />
+
+        <local:ListBoxItemWithCheckBox
+            x:Key="AutoConnectListBoxItem"
+            Title="Auto Connect"
+            ControlDisabledMessage="N/A"
+            CheckBoxIsChecked="False"
+            ForeGroundColor="Black"
+            BorderBlushColor="LightGray"
+            ListBoxItemTouchedCommand="{x:Null}" />
+
+        <local:ListBoxItemWithComboBox
+            x:Key="SecurityListBoxItem"
+            Title="Security"
+            ControlDisabledMessage="N/A"
+            BluetoothSecurities="{StaticResource SecurityTypeArray}"
+            SelectedIndex="0"
+            ForeGroundColor="Black"
+            BorderBlushColor="LightGray"
+            ListBoxItemTouchedCommand="{x:Null}" />
+
+        <local:ListBoxItemWithCheckBox
+            x:Key="ChangePinCodeListBoxItem"
+            Title="Change PIN Code"
+            ControlDisabledMessage="N/A"
+            CheckBoxIsChecked="False"
+            ForeGroundColor="Black"
+            BorderBlushColor="LightGray"
+            ListBoxItemTouchedCommand="{x:Null}" />
+
+        <local:ListBoxItemWithTextBox
+            x:Key="NewPinCodeListBoxItem"
+            Title="New PIN Code"
+            ControlDisabledMessage="N/A"
+            TextBoxPreferredImeConversionMode="Alphanumeric"
+            ForeGroundColor="Black"
+            BorderBlushColor="LightGray"
+            ListBoxItemTouchedCommand="{x:Null}" />
+
+        <x:Array x:Key="DeviceNameListBoxItemsSource" Type="local:ListBoxItemWithTextBox" >
+            <StaticResourceExtension ResourceKey="DeviceNameListBoxItem" />
+        </x:Array>
+
+        <x:Array x:Key="iOSPortNameListBoxItemsSource" Type="local:ListBoxItemWithTextBox" >
+            <StaticResourceExtension ResourceKey="iOSPortNameListBoxItem" />
+        </x:Array>
+
+        <x:Array x:Key="AutoConnectListBoxItemsSource" Type="local:ListBoxItemWithCheckBox" >
+            <StaticResourceExtension ResourceKey="AutoConnectListBoxItem" />
+        </x:Array>
+
+        <x:Array x:Key="SecurityListBoxItemsSource" Type="local:ListBoxItemWithComboBox" >
+            <StaticResourceExtension ResourceKey="SecurityListBoxItem" />
+        </x:Array>
+
+        <x:Array x:Key="ChangePinCodeListBoxItemsSource" Type="local:ListBoxItemWithCheckBox" >
+            <StaticResourceExtension ResourceKey="ChangePinCodeListBoxItem" />
+        </x:Array>
+
+        <x:Array x:Key="NewPinCodeListBoxItemsSource" Type="local:ListBoxItemWithTextBox" >
+            <StaticResourceExtension ResourceKey="NewPinCodeListBoxItem" />
+        </x:Array>
+
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Source={StaticResource ResourceManager}, Path=BluetoothSettingSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Template="{StaticResource RefreshButtonTemplete}" Margin="0, 0, 20, 0" Click="RefreshButton_Click"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
+
+                <ListBox ItemsSource="{StaticResource DeviceNameListBoxItemsSource}" ItemTemplate="{StaticResource ListBoxItemWithTextBoxTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+
+                <ListBox ItemsSource="{StaticResource iOSPortNameListBoxItemsSource}" ItemTemplate="{StaticResource ListBoxItemWithTextBoxTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+
+                <ListBox ItemsSource="{StaticResource AutoConnectListBoxItemsSource}" ItemTemplate="{StaticResource ListBoxItemWithCheckBoxTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+
+                <ListBox ItemsSource="{StaticResource SecurityListBoxItemsSource}" ItemTemplate="{StaticResource ListBoxItemWithComboBoxTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+
+                <ListBox ItemsSource="{StaticResource ChangePinCodeListBoxItemsSource}" ItemTemplate="{StaticResource ListBoxItemWithCheckBoxTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+
+                <ListBox ItemsSource="{StaticResource NewPinCodeListBoxItemsSource}" ItemTemplate="{StaticResource ListBoxItemWithTextBoxTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+
+            </StackPanel>
+
+            <Button x:Name="applyButton" Grid.Row="2" Grid.Column="1" Content="Apply" Style="{StaticResource CallFunctionButtonStyle}" Margin="0, 0, 20, 20" Click="ApplyButton_Click"/>
+
+        </Grid>
+    </local:CustomScrollViewer>
+</Page>

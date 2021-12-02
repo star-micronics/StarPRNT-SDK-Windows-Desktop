@@ -1,0 +1,101 @@
+﻿<Page x:Class="StarPRNTSDK.DisplaySamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="DisplaySamplePage">
+
+    <Page.Resources >
+        <local:CallDisplayFunctionClickEvent x:Key="CheckStatusCommand" Function="{StaticResource CheckStatusFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="TextCommand" Function="{StaticResource TextFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="GraphicCommand" Function="{StaticResource GraphicFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="TurnOnOffCommand" Function="{StaticResource TurnOnOffFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="CursorCommand" Function="{StaticResource CursorFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="ContrastCommand" Function="{StaticResource ContrastFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="CharacterSetInternationalCommand" Function="{StaticResource CharacterSetInternationalFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="CharacterSetCodePageCommand" Function="{StaticResource CharacterSetCodePageFunction}" Executable="True" />
+        <local:CallDisplayFunctionClickEvent x:Key="UserDefinedCharacterCommand" Function="{StaticResource UserDefinedCharacterFunction}" Executable="True" />
+
+        <local:GoNextPageCommand x:Key="GoDisplayExtSamplePageCommand" NavigationUri="DisplayExtSamplePage.xaml" Executable="True" />
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=DisplaySamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Label Content="Contents" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource CheckStatusFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource CheckStatusCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource TextCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource GraphicFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GraphicCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TurnOnOffFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource TurnOnOffCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource CursorFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource CursorCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource ContrastFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource ContrastCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource CharacterSetInternationalFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource CharacterSetInternationalCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource CharacterSetCodePageFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource CharacterSetCodePageCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource UserDefinedCharacterFunction}, Path=Title}" 
+                    ForeGroundColor="Blue" 
+                    ListBoxItemTouchedCommand="{StaticResource UserDefinedCharacterCommand}" />
+
+            </ListBox>
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOExtManagerSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="Sample" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoDisplayExtSamplePageCommand}" />
+
+
+            </ListBox>
+
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>
