@@ -42,4 +42,4 @@ Please refer to the [StarPRNT SDK document](https://www.star-m.jp/starprntsdk-om
 
 ## Copyright
 
-Copyright 2017-2021 Star Micronics Co., Ltd. All rights reserved.
+Copyright 2017-2022 Star Micronics Co., Ltd. All rights reserved.

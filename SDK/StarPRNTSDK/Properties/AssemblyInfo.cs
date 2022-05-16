@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Star Micronics Co., Ltd.")]
 [assembly: AssemblyProduct("StarPRNTSDK")]
-[assembly: AssemblyCopyright("Copyright (C) 2021 Star Micronics Co., Ltd.")]
+[assembly: AssemblyCopyright("Copyright (C) 2017-2022 Star Micronics Co., Ltd.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -49,5 +49,5 @@ using System.Windows;
 // すべての値を指定するか、次を使用してビルド番号とリビジョン番号を既定に設定できます
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("5.15.0.0")]
-[assembly: AssemblyFileVersion("5.15.0.0")]
+[assembly: AssemblyVersion("5.15.1.0")]
+[assembly: AssemblyFileVersion("5.15.1.0")]

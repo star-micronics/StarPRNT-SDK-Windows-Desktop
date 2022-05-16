@@ -100,9 +100,8 @@
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="ReachFramework" />
-    <Reference Include="StarIO, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StarMicronics.StarIO.Desktop.2.8.0\lib\net35\StarIO.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="StarIO, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StarMicronics.StarIO.Desktop.2.8.1\lib\net35\StarIO.dll</HintPath>
     </Reference>
     <Reference Include="StarIOExtension, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StarMicronics.StarIOExtension.Desktop.1.7.0\lib\net35\StarIOExtension.dll</HintPath>
@@ -497,8 +496,8 @@
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\StarMicronics.StarIOExtension.Desktop.1.7.0\build\net35\StarMicronics.StarIOExtension.Desktop.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StarMicronics.StarIOExtension.Desktop.1.7.0\build\net35\StarMicronics.StarIOExtension.Desktop.targets'))" />
-    <Error Condition="!Exists('..\packages\StarMicronics.StarIO.Desktop.2.8.0\build\net35\StarMicronics.StarIO.Desktop.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StarMicronics.StarIO.Desktop.2.8.0\build\net35\StarMicronics.StarIO.Desktop.targets'))" />
+    <Error Condition="!Exists('..\packages\StarMicronics.StarIO.Desktop.2.8.1\build\net35\StarMicronics.StarIO.Desktop.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StarMicronics.StarIO.Desktop.2.8.1\build\net35\StarMicronics.StarIO.Desktop.targets'))" />
   </Target>
   <Import Project="..\packages\StarMicronics.StarIOExtension.Desktop.1.7.0\build\net35\StarMicronics.StarIOExtension.Desktop.targets" Condition="Exists('..\packages\StarMicronics.StarIOExtension.Desktop.1.7.0\build\net35\StarMicronics.StarIOExtension.Desktop.targets')" />
-  <Import Project="..\packages\StarMicronics.StarIO.Desktop.2.8.0\build\net35\StarMicronics.StarIO.Desktop.targets" Condition="Exists('..\packages\StarMicronics.StarIO.Desktop.2.8.0\build\net35\StarMicronics.StarIO.Desktop.targets')" />
+  <Import Project="..\packages\StarMicronics.StarIO.Desktop.2.8.1\build\net35\StarMicronics.StarIO.Desktop.targets" Condition="Exists('..\packages\StarMicronics.StarIO.Desktop.2.8.1\build\net35\StarMicronics.StarIO.Desktop.targets')" />
 </Project>
