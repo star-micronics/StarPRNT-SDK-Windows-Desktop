@@ -1,0 +1,86 @@
+﻿<Page x:Class="StarPRNTSDK.CashDrawerSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="CashDrawerSamplePage">
+
+    <Page.Resources >
+        <local:OpenCashDrawerClickEvent x:Key="Channel1CheckConditionCommand" Channel="No1" CheckCondition="True" Executable="True" />
+        <local:OpenCashDrawerClickEvent x:Key="Channel1DoNotCheckConditionCommand" Channel="No1" CheckCondition="False" Executable="True" />
+        <local:OpenCashDrawerClickEvent x:Key="Channel2CheckConditionCommand" Channel="No2" CheckCondition="True" Executable="True" />
+        <local:OpenCashDrawerClickEvent x:Key="Channel2DoNotCheckConditionCommand" Channel="No2" CheckCondition="False" Executable="True" />
+
+        <local:GoNextPageWithSetCashDrawerOpenParameter x:Key="GoCashDrawerExtPageChannel1CheckConditionCommand" Channel="No1" CheckCondition="True" NavigationUri="CashDrawerExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetCashDrawerOpenParameter x:Key="GoCashDrawerExtPageChannel1DoNotCheckConditionCommand" Channel="No1" CheckCondition="False" NavigationUri="CashDrawerExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetCashDrawerOpenParameter x:Key="GoCashDrawerExtPageChannel2CheckConditionCommand" Channel="No2" CheckCondition="True" NavigationUri="CashDrawerExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetCashDrawerOpenParameter x:Key="GoCashDrawerExtPageChannel2DoNotCheckConditionCommand" Channel="No2" CheckCondition="False" NavigationUri="CashDrawerExtSamplePage.xaml" Executable="True" />
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=CashDrawerSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOSDKSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="Channel1 (Check condition.)" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource Channel1CheckConditionCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="Channel1 (Do not check condition.)" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource Channel1DoNotCheckConditionCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="Channel2 (Check condition.)" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource Channel2CheckConditionCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="Channel2 (Do not check condition.)"  
+                    ForeGroundColor="Blue"
+                    ListBoxItemTouchedCommand="{StaticResource Channel2DoNotCheckConditionCommand}" />
+
+            </ListBox>
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOExtManagerSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="Channel1 (Check condition.)" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCashDrawerExtPageChannel1CheckConditionCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="Channel1 (Do not check condition.)" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCashDrawerExtPageChannel1DoNotCheckConditionCommand}"/>
+
+                <local:BaseListBoxItem 
+                    Title="Channel2 (Check condition.)" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCashDrawerExtPageChannel2CheckConditionCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="Channel2 (Do not check condition.)"  
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCashDrawerExtPageChannel2DoNotCheckConditionCommand}" />
+
+            </ListBox>
+
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>

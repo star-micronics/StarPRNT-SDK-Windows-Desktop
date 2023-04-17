@@ -1,0 +1,202 @@
+==============================
+ Changelog
+==============================
+    Ver 5.16.0_20230331
+    2023/03/31
+        [StarIO]
+            - 機能追加
+                * mC-Label3に対応
+            - SM-S210i, SM-T300i, SM-T300, SM-T400iのBluetoothモジュール情報を新規追加
+
+        [StarIOExtension]
+            - 機能追加
+                * mC-Label3に対応
+
+    Ver 5.15.1_20220510
+    2022/05/10
+        [StarIO]
+            - SM-L200のBluetoothモジュール情報を新規追加
+
+    Ver 5.15.0_20211029
+    2021/10/29
+        [StarIO]
+            - 機能追加
+                * TSP100IVに対応
+
+        [SMCloudServicesSolution]
+            - サポート終了
+
+        [SDK]
+            - サンプルコードの追加
+                * TSP100IVに対応
+
+    Ver 5.14.0_20201209
+    2020/12/09
+        [StarIODeviceSetting example]
+            - 新規作成
+
+        [StarIODeviceSetting]
+            - 新規作成
+
+    Ver 5.14.0
+    2020/06/17
+        [StarIO]
+            - 機能追加
+                * MCP31C, TSP650IISKに対応
+                * インターフェイス自動切り替え機能の追加
+                * 用紙保持制御機能の追加
+
+        [StarIOExtension]
+            - 機能追加
+                * MCP31C, TSP650IISKに対応
+                * 用紙保持制御機能の追加
+                * IPeripheralCommandParserのUSB HIDクラス（キーボードモード）対応
+
+        [SDK]
+            - サンプルコードの追加
+                * インターフェイス自動切り替え機能の実装例
+                * 用紙保持制御の実装例
+
+    Ver. 5.13.0
+    2019/12/25
+        [SDK]
+            - プロジェクト構成の変更
+                * 各ライブラリのNuget対応
+
+        [マニュアル]
+            - StarPRNT SDKユーザーズマニュアルをPDFからオンラインマニュアルへのリンクに変更
+
+    Ver. 5.11.0
+    2019/09/04
+        [StarIO]
+        - 機能追加
+            * PortExceptionクラスにErrorCodeプロパティを追加
+        - 仕様変更
+            * ReleasePortメソッドの挙動を変更
+            変更前:
+                ReleasePortメソッドを呼ぶ前にGetPortメソッドを複数回呼んだ場合は、
+                GetPortメソッドを呼んだ回数分ReleasePortメソッドを呼ぶことでポートがクローズされる。
+            変更後:
+                ReleasePortメソッドを呼んだ場合は、GetPortメソッドを呼んだ回数に関わらず必ずポートがクローズされる。
+
+        [StarIOExtension]
+            - 機能追加
+                * AppendBlackMarkメソッドでStarPRNTエミュレーションのモバイルプリンタのブラックマーク設定の有効/無効を切り替えできるように変更
+
+        [SMCloudServicesSolution]
+            - バグ修正
+                * ShowRegistrationViewメソッドで表示されるビューのレイアウトの軽微な修正
+
+        [SDK]
+            - サンプルコードの追加
+                * プリンタとの通信失敗要因取得の実装例
+
+    Ver. 5.10.0
+    2019/03/07
+        [StarIO]
+            - 機能追加
+                * GetPortメソッドのportNameパラメータにBDアドレスを指定できる機能を追加
+
+        [StarIOExtension]
+            - 機能追加
+                * AppendCjkUnifiedIdeographFontメソッドを追加
+                UTF-8におけるCJK統合漢字フォントの優先順位を指定可能
+                (TSP650II JP2/TWモデル ファームウェアバージョン4.0以降、mC-Print3、mC-Print2のみ対応)
+                * BarcodeWidth列挙体にコマンド仕様に準拠したバーコードモード（シンボル幅）が指定されるExtModeを追加
+            - バグ修正
+                * ESC/POS Mobileエミュレーションで、印字されるイメージがAppendBitmapWithAbsolutePositionメソッド
+                で指定したpositionの2倍絶対位置移動される問題を修正
+                * ページモード時、AppendBitmapWithAbsolutePositionメソッドでpositionに0を指定しても、
+                横軸の印字開始位置が行頭に設定されない問題を修正
+                * StarPRNTエミュレーションで、AppendBitmapメソッドで入力したビットマップ下端の空白が印字されない問題を修正
+
+        [SDK]
+            - サンプルコードの変更
+                * UTF-8におけるCJK統合漢字印字サンプルの実装例をAppendCjkUnifiedIdeographFontメソッドを
+                使用するよう変更
+
+    Ver. 5.9.0
+    2018/11/20
+        [StarIOExtension]
+            - 機能追加
+                * メロディスピーカーのAPI対応
+
+        [SDK]
+            - サンプルコードの追加
+                * メロディスピーカー制御の実装例
+
+    Ver. 5.7.0
+    2018/06/29
+        [StarIO]
+            - バグ修正
+                * 特定の環境においてSearchPrinterメソッドでEthernetプリンターを検出できない問題を修正
+
+        [StarIOExtension]
+            - 以下APIのサポート終了
+                * StarIoExt.CreateScaleCommandBuilderメソッド
+                * StarIoExt.CreateScaleConnectParserメソッド
+                * StarIoExt.CreateScaleWeightParserメソッド
+                * ScaleModel列挙体
+                * IScaleCommandBuilderインターフェイス
+                * IPeripheralCommandParser.ReceiveCommandsプロパティ
+                * IScaleWeightParserインターフェイス
+
+        [SMCloudServicesSolution]
+            - 機能追加
+                * SMCloudServices.ShowRegistrationWindow メソッド
+                SCSダッシュボードのパスワードを変更した場合に、ローカルのパスワードを更新出来るようにしました。
+
+        [SDK]
+            - サンプルコードの追加
+                * 迂回印刷の実装例
+
+    Ver. 5.6.0
+    2018/05/21
+        [StarIO]
+            - 機能追加
+                * mC-Print2, mC-Print3に対応
+                * GetPortメソッドのportSettingsパラメータに指定できるオプションを追加
+                * StarPrinterStatusクラスにConnectedInterfaceプロパティを追加
+            - バグ修正
+                * 特定の環境においてSearchPrinterメソッドでBluetoothプリンターを検出できない問題を修正
+                * SearchPrinterメソッドでUSBシリアルナンバーを取得できない場合がある問題を修正
+            - 厳密な名前付きのライブラリを追加
+
+        [StarIOExtension]
+            - 機能追加
+                * トップマージンを設定するメソッドを追加
+                * 印字領域を設定するメソッドを追加
+                *AppendSoundメソッドに駆動時間、ディレイ時間を設定するパラメータを追加
+            - バグ修正
+                * IScaleWeightParserインターフェイスのParseメソッドが適切な結果を返さない場合がある問題を修正
+                * StarPrintPortJobMonitorクラスのStopメソッドが適切に終了しない場合がある問題を修正
+            - 厳密な名前付きのライブラリを追加
+
+        [SMCloudServicesSolution]
+            - 厳密な名前付きのライブラリを追加
+
+        [SDK]
+            - サンプルコードの追加
+                * USBシリアルナンバーを設定するサンプルコードの追加
+
+    Ver. 5.5.0
+    2018/01/31
+        [StarIO]
+            - ステータス監視中に、LANインターフェイスのプリンタ電源オフ後、
+            タイムアウト時間内にプリンタが復帰すると、印字できなくなる場合がある問題を修正
+
+        [StarIOExtension]
+            - 水平タブを設定・クリアするメソッドを追加
+
+        [SDK]
+            - サンプルコードの追加
+                * UTF-8におけるCJK統合漢字 印字サンプルの実装例
+                (TSP650II JP2/TWモデル ファームウェアバージョン4.0以降のみ対応)
+
+    Ver. 5.4.1
+    2017/10/26
+        ライブラリ難読化ライセンスの更新
+
+    Ver. 5.4.0
+    2017/10/12
+        初版リリース

@@ -1,0 +1,149 @@
+﻿<Page x:Class="StarPRNTSDK.PrinterSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="1200" d:DesignWidth="1200"
+      Title="PrinterSamplePage">
+
+    <Page.Resources >
+        <local:PrintLocalizeReceiptClickEvent x:Key="PrintTextReceiptCommand" ReceiptInformationManager="{StaticResource TextReceipt}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=TextReceiptIsEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptClickEvent x:Key="PrintTextReceiptUTF8Command" ReceiptInformationManager="{StaticResource TextReceiptUTF8}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=TextUTF8ReceiptIsEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptClickEvent x:Key="PrintRasterReceiptCommand" ReceiptInformationManager="{StaticResource RasterReceipt}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptClickEvent x:Key="PrintRasterReceiptBothScaleCommand" ReceiptInformationManager="{StaticResource RasterReceiptBothScale}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptClickEvent x:Key="PrintRasterReceiptScaleCommand" ReceiptInformationManager="{StaticResource RasterReceiptScale}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptClickEvent x:Key="PrintRasterCouponCommand" ReceiptInformationManager="{StaticResource RasterCoupon}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponIsEnabled, Mode=OneWay}" />
+        <local:PrintLocalizeReceiptClickEvent x:Key="PrintRasterCouponRotation90Command" ReceiptInformationManager="{StaticResource RasterCouponRotation90}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponIsEnabled, Mode=OneWay}" />
+
+        <local:PrintPhotoFromLibraryClickEvent x:Key="PrintPhotoFromLibraryCommand" ReceiptInformationManager="{StaticResource ReceiptInformationManager}" Executable="True" />
+
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoPrinterExtPageTextCommand" ReceiptType="Text" NavigationUri="PrinterExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=TextReceiptIsEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoPrinterExtPageTextUTF8Command" ReceiptType="TextUTF8" NavigationUri="PrinterExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=TextUTF8ReceiptIsEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoPrinterExtPageRasterCommand" ReceiptType="Raster" NavigationUri="PrinterExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoPrinterExtPageRasterBothScaleCommand" ReceiptType="RasterBothScale" NavigationUri="PrinterExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoPrinterExtPageRasterScaleCommand" ReceiptType="RasterScale" NavigationUri="PrinterExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoPrinterExtPageRasterCouponCommand" ReceiptType="RasterCoupon" NavigationUri="PrinterExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponIsEnabled, Mode=OneWay}" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoPrinterExtPageRasterCouponRotation90Command" ReceiptType="RasterCouponRotation90" NavigationUri="PrinterExtSamplePage.xaml" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponIsEnabled, Mode=OneWay}" />
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=PrinterSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOSDKSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=TextReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextReceiptCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceiptUTF8}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintTextReceiptUTF8Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterReceiptCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptBothScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterReceiptBothScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterReceiptScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCoupon}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterCouponCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCouponRotation90}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue" 
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRasterCouponRotation90Command}" />
+            </ListBox>
+
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOExtManagerSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=TextReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterExtPageTextCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceiptUTF8}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterExtPageTextUTF8Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterExtPageRasterCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptBothScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterExtPageRasterBothScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterExtPageRasterScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCoupon}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterExtPageRasterCouponCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCouponRotation90}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue" 
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource GoPrinterExtPageRasterCouponRotation90Command}" />
+            </ListBox>
+
+            <Label Content="Appendix" Style="{StaticResource ListBoxSeparatorStyle}" Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=AppendixVisibility, Mode=OneWay}" />
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="Print Photo from Library" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=PrintPhotoFromCameraVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintPhotoFromLibraryCommand}"/>
+            </ListBox>
+
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>

@@ -1,0 +1,72 @@
+﻿<Page x:Class="StarPRNTSDK.CombinationSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="CombinationSamplePage">
+
+    <Page.Resources >
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoCombinationExtPageTextCommand" ReceiptType="Text" NavigationUri="CombinationExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoCombinationExtPageTextUTF8Command" ReceiptType="TextUTF8" NavigationUri="CombinationExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoCombinationExtPageRasterCommand" ReceiptType="Raster" NavigationUri="CombinationExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoCombinationExtPageRasterBothScaleCommand" ReceiptType="RasterBothScale" NavigationUri="CombinationExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoCombinationExtPageRasterScaleCommand" ReceiptType="RasterScale" NavigationUri="CombinationExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoCombinationExtPageRasterCouponCommand" ReceiptType="RasterCoupon" NavigationUri="CombinationExtSamplePage.xaml" Executable="True" />
+        <local:GoNextPageWithSetReceiptTypeCommand x:Key="GoCombinationExtPageRasterCouponRotation90Command" ReceiptType="RasterCouponRotation90" NavigationUri="CombinationExtSamplePage.xaml" Executable="True" />
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=CombinationSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+            
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=StarIOExtManagerSampleTitle}" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationExtPageTextCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceiptUTF8}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationExtPageTextUTF8Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationExtPageRasterCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptBothScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationExtPageRasterBothScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationExtPageRasterScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCoupon}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationExtPageRasterCouponCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCouponRotation90}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue" 
+                    ListBoxItemTouchedCommand="{StaticResource GoCombinationExtPageRasterCouponRotation90Command}" />
+            </ListBox>
+            
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>
