@@ -1,0 +1,34 @@
+﻿<Page x:Class="StarPRNTSDK.CombinationExtSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="CombinationExtSamplePage" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <local:CustomScrollViewer x:Name="pageScrollViewer" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="{Binding Source={StaticResource ResourceManager}, Path=CombinationExtSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Button Grid.Row="0" HorizontalAlignment="Right" Template="{StaticResource RefreshButtonTemplete}" Margin="0, 0, 20, 0" Click="RefreshButton_Click"/>
+
+            <Label Grid.Row="1" Content="Contents" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox Grid.Row="2" Grid.RowSpan="2" x:Name="readDataListBox" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+
+            <TextBlock Grid.Row="2" x:Name="statusTextBlock" Style="{StaticResource ExtStatusTextBlockStyle}" />
+
+            <Button Grid.Row="3" Content="Print" HorizontalAlignment="Right" Style="{StaticResource CallFunctionButtonStyle}" Margin="0, 0, 20, 20" Click="PrintButton_Click"/>
+            
+        </Grid>
+    </local:CustomScrollViewer>
+</Page>

@@ -1,0 +1,93 @@
+﻿<Page x:Class="StarPRNTSDK.PrintRedirectionSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StarPRNTSDK"
+      mc:Ignorable="d" 
+      d:DesignHeight="1200" d:DesignWidth="1200"
+      Title="PrintRedirectionSamplePage">
+
+    <Page.Resources >
+        <local:GoSearchPortPageCommand x:Key="GoSearchPortPageForSubPrinterCommand" PrinterPriority="1" SourceUri="PrintRedirectionSamplePage.xaml" Executable="True" />
+
+        <local:PrintRedirectionClickEvent x:Key="PrintRedirectionTextReceiptCommand" ReceiptInformationManager="{StaticResource TextReceipt}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=TextReceiptIsEnabledForPrintRedirection, Mode=OneWay}" />
+        <local:PrintRedirectionClickEvent x:Key="PrintRedirectionTextReceiptUTF8Command" ReceiptInformationManager="{StaticResource TextReceiptUTF8}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=TextUTF8ReceiptIsEnabledForPrintRedirection, Mode=OneWay}" />
+        <local:PrintRedirectionClickEvent x:Key="PrintRedirectionRasterReceiptCommand" ReceiptInformationManager="{StaticResource RasterReceipt}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabledForPrintRedirection, Mode=OneWay}" />
+        <local:PrintRedirectionClickEvent x:Key="PrintRedirectionRasterReceiptBothScaleCommand" ReceiptInformationManager="{StaticResource RasterReceiptBothScale}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabledForPrintRedirection, Mode=OneWay}" />
+        <local:PrintRedirectionClickEvent x:Key="PrintRedirectionRasterReceiptScaleCommand" ReceiptInformationManager="{StaticResource RasterReceiptScale}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptIsEnabledForPrintRedirection, Mode=OneWay}" />
+        <local:PrintRedirectionClickEvent x:Key="PrintRedirectionRasterCouponCommand" ReceiptInformationManager="{StaticResource RasterCoupon}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponIsEnabledForPrintRedirection, Mode=OneWay}" />
+        <local:PrintRedirectionClickEvent x:Key="PrintRedirectionRasterCouponRotation90Command" ReceiptInformationManager="{StaticResource RasterCouponRotation90}" Executable="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponIsEnabledForPrintRedirection, Mode=OneWay}" />
+
+    </Page.Resources>
+
+    <local:CustomScrollViewer >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Source={StaticResource ResourceManager}, Path=PrintRedirectionSamplePageTitle}" Style="{StaticResource PageTitleStyle}" />
+
+            <Label Content="Backup Device" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem
+                    Title="{Binding Source={StaticResource SelectedModelManager}, Path=SelectedSubModelDescription}"
+                    ForeGroundColor="Blue"  
+                    BackGroudColor="LightBlue"
+                    IsAnimation="{Binding Source={StaticResource SelectedModelManager}, Path=IsUnselectedSubModel}"
+                    ListBoxItemTouchedCommand="{StaticResource GoSearchPortPageForSubPrinterCommand}" />
+            </ListBox>
+            
+            <Label Content="Sample" Style="{StaticResource ListBoxSeparatorStyle}" />
+
+            <ListBox ItemTemplate="{StaticResource ListBoxItemTemplate}" BorderBrush="{x:Null}" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" >
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=TextReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRedirectionTextReceiptCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource TextReceiptUTF8}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRedirectionTextReceiptUTF8Command}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceipt}, Path=Description}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRedirectionRasterReceiptCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptBothScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRedirectionRasterReceiptBothScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterReceiptScale}, Path=DescriptionPaperSizeScaled}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterReceiptVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRedirectionRasterReceiptScaleCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCoupon}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue"
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRedirectionRasterCouponCommand}" />
+
+                <local:BaseListBoxItem 
+                    Title="{Binding Source={StaticResource RasterCouponRotation90}, Path=DescriptionWithoutPaperSize}" 
+                    ForeGroundColor="Blue" 
+                    BorderBlushColor="LightGray"
+                    Visibility="{Binding Source={StaticResource SelectedModelManager}, Path=RasterCouponVisibility, Mode=OneWay}"
+                    ListBoxItemTouchedCommand="{StaticResource PrintRedirectionRasterCouponRotation90Command}" />
+            </ListBox>
+
+        </StackPanel>
+    </local:CustomScrollViewer>
+</Page>
