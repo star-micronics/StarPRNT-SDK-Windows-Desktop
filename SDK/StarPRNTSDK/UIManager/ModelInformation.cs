@@ -17,6 +17,7 @@ namespace StarPRNTSDK
         T300i_StarPRNT,
         T400i_StarPRNT,
         BSC10,
+        BSC10II,
         FVP10,
         SP700,
         TSP650II,

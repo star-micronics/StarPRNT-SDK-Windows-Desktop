@@ -893,7 +893,7 @@ namespace StarPRNTSDK
                           BlackMarkIsEnabled = false,
                           BlackMarkDetectionIsEnabled = false,
                           PageModeIsEnabled = true,
-                          PaperPresentStatusIsEnabled = false,
+                          PaperPresentStatusIsEnabled = true,
                           AutoSwitchInterfaceIsEnabled = true,
                           CashDrawerIsEnabled = true,
                           BarcodeReaderIsEnabled = true,
@@ -940,6 +940,40 @@ namespace StarPRNTSDK
                           ProductSerialNumberIsEnabled = true,
                           SettableUSBSerialNumberLength = 8,
                           USBSerialNumberIsEnabledDefault = false
+                      }
+                    },
+
+                    { PrinterModel.BSC10II,
+                      new PrinterInfo()
+                      {
+                          Emulation = Emulation.StarPRNT,
+                          DefaultPaperSize = PaperSizeType.ThreeInch,
+                          ModelName = new string[] { "Star BSC10II" },
+                          DeviceID = new string[] {  "BSC10II (STR-001)" },
+                          BTDeviceNamePrefix = (string[])Enumerable.Empty<string>(),
+                          DefaultPortSettings = "",
+                          ChangeCashDrawerPolarityIsEnabled = true,
+                          SimpleModelName = "BSC10II",
+                          TextReceiptIsEnabled = true,
+                          UTF8IsEnabled = true,
+                          RasterReceiptIsEnabled = true,
+                          CJKIsEnabled = true,
+                          BlackMarkIsEnabled = false,
+                          BlackMarkDetectionIsEnabled = false,
+                          PageModeIsEnabled = true,
+                          PaperPresentStatusIsEnabled = false,
+                          AutoSwitchInterfaceIsEnabled = true,
+                          CashDrawerIsEnabled = true,
+                          BarcodeReaderIsEnabled = false,
+                          CustomerDisplayIsEnabled = false,
+                          MelodySpeakerIsEnabled = false,
+                          SoundNumberDefault = -1,
+                          SoundVolumeDefault = -1,
+                          SoundVolumeMax = -1,
+                          SoundVolumeMin = -1,
+                          ProductSerialNumberIsEnabled = true,
+                          SettableUSBSerialNumberLength = 16,
+                          USBSerialNumberIsEnabledDefault = true
                       }
                     },
 

@@ -41,6 +41,7 @@
             <local:ModelInformation Model="L200" />
             <local:ModelInformation Model="L300" />
             <local:ModelInformation Model="BSC10" />
+            <local:ModelInformation Model="BSC10II" />
             <local:ModelInformation Model="S210i_StarPRNT" />
             <local:ModelInformation Model="S220i_StarPRNT" />
             <local:ModelInformation Model="S230i_StarPRNT" />

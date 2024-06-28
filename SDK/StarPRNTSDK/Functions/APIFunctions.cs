@@ -389,8 +389,8 @@ namespace StarPRNTSDK
 
                 builder.AppendCutPaper(CutPaperAction.PartialCutWithFeed);
 
-                builder.AppendTopMargin(6);
-                builder.Append(Encoding.UTF8.GetBytes("*Top margin:6mm*\n"));
+                builder.AppendTopMargin(5);
+                builder.Append(Encoding.UTF8.GetBytes("*Top margin:5mm*\n"));
                 builder.Append(data);
                 builder.Append(data);
                 builder.Append(data);

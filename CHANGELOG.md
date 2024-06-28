@@ -1,3 +1,29 @@
+# V5.18.0
+
+## StarIO
+- Added Features
+  * Supported BSC10II.
+
+## StarIOExtension
+- Added Features
+  * ICommandBuilder Class : CutPaperAction.TearOff
+  * ICommandBuilder Class : InternationalType.India
+
+## SDK
+- Added Sample Codes
+  * Supported BSC10II.
+
+
+# V5.17.0
+
+## StarIO
+- Minor Fixes that do not affect operation.
+
+## SDK
+- Added Sample Codes
+  * Supported TSP100IV SK.
+
+
 # V5.16.0
 
 ## StarIO

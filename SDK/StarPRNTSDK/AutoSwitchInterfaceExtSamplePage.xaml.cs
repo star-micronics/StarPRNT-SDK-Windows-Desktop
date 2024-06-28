@@ -21,7 +21,16 @@ namespace StarPRNTSDK
             bool drawerOpenStatus = SharedInformationManager.SelectedDrawerOpenStatus;
 
             // Specifying AutoSwitch: for portName allows you to automatically select the interface for connecting to the printer.
-            StarIoExtManager = new StarIoExtManager("AutoSwitch:", portSettings, 30000, StarIoExtManagerType.WithBarcodeReader);
+            if (SharedInformationManager.SelectedModelInformation.BarcodeReaderIsEnabled)
+            { 
+                StarIoExtManager = new StarIoExtManager("AutoSwitch:", portSettings, 30000, StarIoExtManagerType.WithBarcodeReader);
+            }
+            else
+            {
+                StarIoExtManager = new StarIoExtManager("AutoSwitch:", portSettings, 30000, StarIoExtManagerType.Standard);
+
+            }
+
             StarIoExtManager.CashDrawerOpenActiveHigh = drawerOpenStatus;
             StarIoExtManager.PrinterConnect += StarIoExtManager_PrinterConnect;
             StarIoExtManager.PrinterDisconnect += StarIoExtManager_PrinterDisconnect;
