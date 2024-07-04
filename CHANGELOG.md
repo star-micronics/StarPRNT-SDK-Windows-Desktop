@@ -2,7 +2,7 @@
 
 ## StarIO
 - Added Features
-  * Supported BSC10II.
+  * Supported BSC10II (Limited region model).
 
 ## StarIOExtension
 - Added Features
