@@ -363,7 +363,7 @@ namespace StarPRNTSDK
                 return SharedInformationManager.SelectedPaperSize;
             }
 
-            if (modelInfomation.Model == PrinterModel.SP700 || modelInfomation.Model == PrinterModel.BSC10)
+            if (modelInfomation.Model == PrinterModel.SP700 || modelInfomation.Model == PrinterModel.BSC10 || modelInfomation.Model == PrinterModel.MCL21)
             {
                 return modelInfomation.DefaultPaperSize;
             }

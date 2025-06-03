@@ -26,6 +26,7 @@ namespace StarPRNTSDK
         POP10,
         MCP20,
         MCP30,
+        MCL21,
         MCL32,
         TSP100IV,
         TSP100,

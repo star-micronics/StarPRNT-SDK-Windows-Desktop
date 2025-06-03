@@ -308,11 +308,6 @@ namespace StarPRNTSDK
 
             int length = printerInfo.SettableUSBSerialNumberLength;
 
-            if (model == PrinterModel.MCL32) // mC-Label3 can not use the USB serial number setting sample in this SDK.
-            {
-                length = 0;
-            }
-
             if (model == PrinterModel.TSP100)
             {
                 if (!IsUSBPrinterClassPort(portName) &&

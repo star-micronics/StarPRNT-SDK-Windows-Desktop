@@ -1,3 +1,24 @@
+# V5.20.0 (2025/05/19)
+
+## StarIO
+- Added Features
+    * Supported mC-Label2.
+
+## StarIOExtension
+- Changed Features
+    * ICommandBuilder Class : Added AppendTextBaseMagnification function.
+    * ICommandBuilder Class : Extended BarcodeWidth enum.
+    * ICommandBuilder Class : Changed to allow selection of adding line feed code to the output of AppendCutPaper function.
+
+## SDK
+- Added Sample Codes
+    * Supported mC-Label2.
+
+StarIO (Ver. 2.12.0)<br>
+StarIO_Extension (Ver. 1.10.0)<br>
+StarIODeviceSetting (Ver. 1.0.0)
+
+
 # V5.19.0 (2024/11/01)
 
 ## StarIO
@@ -7,6 +28,10 @@
 ## SDK
 - Added Sample Codes
   * Supported TSP100IV-UEWB, TSP100IV-UEWB SK.
+
+StarIO (Ver. 2.11.0)<br>
+StarIO_Extension (Ver. 1.9.0)<br>
+StarIODeviceSetting (Ver. 1.0.0)
 
 
 # V5.18.0 (2024/06/24)
@@ -24,6 +49,10 @@
 - Added Sample Codes
     * Supported BSC10II (Limited region model).
 
+StarIO (Ver. 2.10.0)<br>
+StarIO_Extension (Ver. 1.9.0)<br>
+StarIODeviceSetting (Ver. 1.0.0)
+
 
 # V5.17.0 (2023/09/08)
 
@@ -33,6 +62,10 @@
 ## SDK
 - Added Sample Codes
     * Supported TSP100IV SK.
+
+StarIO (Ver. 2.9.1)<br>
+StarIO_Extension (Ver. 1.8.0)<br>
+StarIODeviceSetting (Ver. 1.0.0)
 
 
 # V5.16.0 (2023/03/31)
@@ -45,6 +78,10 @@
 ## StarIOExtension
 - Added features
   * Added mC-Label3.
+
+StarIO (Ver. 2.9.0)<br>
+StarIO_Extension (Ver. 1.8.0)<br>
+StarIODeviceSetting (Ver. 1.0.0)
 
 
 # V5.15.1 (2022/05/10)

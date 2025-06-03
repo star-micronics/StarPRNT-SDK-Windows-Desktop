@@ -24,6 +24,7 @@
         <x:Array x:Key="PrinterModelArray" Type="{x:Type local:ModelInformation}" >
             <local:ModelInformation Model="MCP20" />
             <local:ModelInformation Model="MCP30" />
+            <local:ModelInformation Model="MCL21" />
             <local:ModelInformation Model="MCL32" />
             <local:ModelInformation Model="POP10" />
             <local:ModelInformation Model="FVP10" />

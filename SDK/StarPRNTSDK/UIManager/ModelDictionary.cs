@@ -841,6 +841,40 @@ namespace StarPRNTSDK
                       }
                     },
 
+                    { PrinterModel.MCL21,
+                      new PrinterInfo()
+                      {
+                          Emulation = Emulation.StarPRNT,
+                          DefaultPaperSize = PaperSizeType.ThreeInch,
+                          ModelName = new string[] { "Star MCL21" },
+                          DeviceID = new string[] { "MCL21 (STR-001)" },
+                          BTDeviceNamePrefix = new string[] {  "mC-Label2-" },
+                          DefaultPortSettings = "",
+                          ChangeCashDrawerPolarityIsEnabled = false,
+                          SimpleModelName = "mC-Label2",
+                          TextReceiptIsEnabled = true,
+                          UTF8IsEnabled = true,
+                          RasterReceiptIsEnabled = true,
+                          CJKIsEnabled = true,
+                          BlackMarkIsEnabled = true,
+                          BlackMarkDetectionIsEnabled = true,
+                          PageModeIsEnabled = true,
+                          PaperPresentStatusIsEnabled = true,
+                          AutoSwitchInterfaceIsEnabled = true,
+                          CashDrawerIsEnabled = false,
+                          BarcodeReaderIsEnabled = true,
+                          CustomerDisplayIsEnabled = true,
+                          MelodySpeakerIsEnabled = false,
+                          SoundNumberDefault = -1,
+                          SoundVolumeDefault = -1,
+                          SoundVolumeMax = -1,
+                          SoundVolumeMin = -1,
+                          ProductSerialNumberIsEnabled = true,
+                          SettableUSBSerialNumberLength = 0, // This printer supports the USB serial number function, but the serial number change function of this sample app is not available for the printer. Please use the Star Configuration or Star Quick Setup Utility for the change function instead.
+                          USBSerialNumberIsEnabledDefault = true
+                      }
+                    },
+                    
                     { PrinterModel.MCL32,
                       new PrinterInfo()
                       {
@@ -870,7 +904,7 @@ namespace StarPRNTSDK
                           SoundVolumeMax = 15,
                           SoundVolumeMin = 0,
                           ProductSerialNumberIsEnabled = true,
-                          SettableUSBSerialNumberLength = 16,
+                          SettableUSBSerialNumberLength = 0, // This printer supports the USB serial number function, but the serial number change function of this sample app is not available for the printer. Please use the Star Configuration or Star Quick Setup Utility for the change function instead.
                           USBSerialNumberIsEnabledDefault = true
                       }
                     },
